@@ -20,9 +20,9 @@ def prompt_user():
     while cont == True:
         user = input('Press 1 to generate password \nPress 2 to exit program \n')
 
-        if int(user) == 1:
+        if user == str(1):
             print('\n' + str(create_otp(key)) + '\n')
-        elif int(user) == 2:
+        elif user == str(2):
             cont = False
         else:
             print('Invalid input')
