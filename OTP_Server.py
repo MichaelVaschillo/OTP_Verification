@@ -1,27 +1,36 @@
 import hashlib
 import numpy as np
 
-class OTP_Server(object):
-    key = "808670FF00FF00FF08812".encode('utf-8')
-    lookUpTable = np.zeros(1000000)
 
-    def __init__(self):
-        lookUpTable = create_lookup_table(key)
-        print("Please intput password:")
+key = "808670FF00FF00FF08812".encode('utf-8')
+passwordIndex = 0
+#lookUpTable = np.zeros(1000000)
 
 
-    def create_lookup_table(self, key):
-        print('stub')
+#lookUpTable = create_lookup_table(key)
+cont = True
 
-    def create_otp(self, input_key):
+while cont != False:
+    userFindPassword = input("Please intput password: ")
 
-        key_hash = str(hashlib.sha256(input_key).hexdigest())
+    while(passwordIndex < 1000000):
+        if(create_otp(key) == userFindPassword):
+            userCheckPassword = input("Please get the next password and input it here: ")
+            if(create_otp(key) == userCheckPassword)
 
-        global key
 
-        key = key_hash.encode('utf-8')
 
-        #Creates a string OTP of key hash with the first 6 digits
-        otp = str(int(key_hash,16))[:6]
+# create_lookup_table(self, key):
+#    print('stub')
 
-        return otp
+def create_otp(input_key):
+    key_hash = str(hashlib.sha256(input_key).hexdigest())
+
+    global key
+
+    key = key_hash.encode('utf-8')
+
+    #Creates a string OTP of key hash with the first 6 digits
+    otp = str(int(key_hash,16))[:6]
+
+    return otp
