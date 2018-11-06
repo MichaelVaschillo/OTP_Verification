@@ -17,14 +17,12 @@ def create_otp(input_key):
 
 def prompt_user():
     cont = True
-    while cont != False:
-        user = input('''Press 1 to generate password 
-                    Press 2 to exit program
-                    ''' )
+    while cont == True:
+        user = input('Press 1 to generate password \nPress 2 to exit program \n')
 
-        if user == 1:
-            print(create_otp(key))
-        elif user == 2:
+        if int(user) == 1:
+            print('\n' + str(create_otp(key)) + '\n')
+        elif int(user) == 2:
             cont = False
         else:
             print('Invalid input')
