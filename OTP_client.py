@@ -1,7 +1,7 @@
 import hashlib
 
 #Create initial key
-key = "808670FF00FF00FF08812".encode('utf-8')
+key = "808670FF00FF08812".encode('utf-8')
 
 def create_otp(input_key):
     

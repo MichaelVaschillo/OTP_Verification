@@ -3,7 +3,7 @@ import numpy as np
 
 
 
-key = "808670FF00FF00FF08812".encode('utf-8')
+key = "808670FF00FF08812".encode('utf-8')
 passwordIndex = 0
 #lookUpTable = np.zeros(1000000)
 
