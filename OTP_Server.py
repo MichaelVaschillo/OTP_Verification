@@ -17,26 +17,41 @@ def create_otp(input_key):
     #Creates a string OTP of key hash with the first 6 digits
     otp = str(int(key_hash,16))[:6]
 
+    global passwordIndex
+    passwordIndex = passwordIndex+1
+    #print(otp)
     return otp
 
 
 #lookUpTable = create_lookup_table(key)
-cont = True
+#cont = True
 
-while cont != False:
-    userFindPassword = input("Please intput password: ")
-
-    correct = False
-    while(passwordIndex < 1000000 and correct == False):
-        if(create_otp(key) == userFindPassword):
-            userCheckPassword = input("Please get the next password and input it here: ")
-            if(create_otp(key)) == userCheckPassword:
-                print("Correct password")
-                correct = True
-                cont = False
-            else:
-                print("Incorrect password please generate the next password and try again")
-                #cont = False
+while True:
+    userFirstPassword = input("Please input password: ")
+    if(userFirstPassword == create_otp(key)):
+        print("Correct password")
+    else:
+        correct = False
+        revertKey = key
+        revertIndex = passwordIndex
+        while(passwordIndex < 1000000 and correct == False):
+            if(userFirstPassword == create_otp(key)):
+            #if(create_otp(key) == userFirstPassword):
+                userSecondPassword = input("Please get the next password and input it here: ")
+                if(create_otp(key)) == userSecondPassword:
+                    print("Correct password")
+                    correct = True
+                else:
+                    print("Incorrect password please generate the next password and try again")
+                    key = revertKey
+                    passwordIndex = revertIndex
+                    correct = True
+                    #cont = False
+        if(passwordIndex >= 1000000):
+            print("Incorrect password")
+            key = revertKey
+            passwordIndex = revertIndex
+        #key = revertKey
 
 
 
