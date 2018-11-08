@@ -1,16 +1,18 @@
 import matplotlib.pyplot as plt
 import hashlib
 
-key = "808670FF00FF00FF08812".encode('utf-8')
+#Create initial key
+key = "808670FF00FF08812".encode('utf-8')
 
 def create_otp(input_key):
     
-    #Hash of the key
+    #Crete hash of the key
     key_hash = str(hashlib.sha256(input_key).hexdigest())
     
     global key
     
-    #Update global key variable
+    #Set global key variable to the hash of the key
+    #This will be used for the next password generation
     key = key_hash.encode('utf-8')
 
     #Creates a string OTP of key hash with the first 6 digits
@@ -42,8 +44,11 @@ print('Back-to-back duplicates in 1 million passwords: ' + str(duplicates))
 collision_counter = []
 
 for i in range(100):
+    #Create a set (list of unique elements) for ten thousand password   
     password_set = set(passwords[0:i*10000])
     
+    #Compare length of set and length of passwords and add to list
+    #The difference is the number of collisions
     collision_counter.append((i*10000) - len(password_set))
 
 plt.figure(1)
